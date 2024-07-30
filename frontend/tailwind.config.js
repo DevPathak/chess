@@ -5,7 +5,7 @@ export default {
 		colors: {
 			background: "#302e2b",
 			text: "#ffffff",
-			button: "#81b64c",
+			button: "#2a132f",
 		},
 	},
 	plugins: [],
