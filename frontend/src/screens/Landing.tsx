@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { INIT_GAME } from "../components/message";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
 
 export const Landing = () => {
 	const [socket, setSocket] = useState<null | WebSocket>(null);
 	const [message, setMessage] = useState<any>([]);
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const socket = new WebSocket("ws://localhost:8080");
@@ -18,9 +22,16 @@ export const Landing = () => {
 		};
 	}, []);
 
+	const init_game = {
+		data: INIT_GAME,
+	};
+
 	const handleOnClickPlay = () => {
+		console.log("inside on click handler");
+		navigate("/game");
 		if (socket) {
-			socket.send(INIT_GAME);
+			socket.send(JSON.stringify(init_game));
+			console.log(init_game);
 		} else {
 			console.log("Socket not yet initialized");
 		}
@@ -38,14 +49,12 @@ export const Landing = () => {
 							Play Chess Online on the #1 Site!
 						</h1>
 						<div className="mt-4">
-							<button
-								className="bg-button hover:bg-text-700 font-bold py-2 px-4 rounded"
+							<Button
 								onClick={() => {
-									handleOnClickPlay;
+									navigate("/game");
 								}}
-							>
-								Play Online
-							</button>
+								children="Play Online"
+							/>
 						</div>
 					</div>
 				</div>

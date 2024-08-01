@@ -6,6 +6,7 @@ export default {
 			background: "#302e2b",
 			text: "#ffffff",
 			button: "#2a132f",
+			green: "#bef264",
 		},
 	},
 	plugins: [],
