@@ -24,6 +24,7 @@ class Game {
         }));
     }
     makeMove(socket, move) {
+        console.log(move);
         if (this.moveCount % 2 === 0 && socket !== this.player1) {
             return;
         }
